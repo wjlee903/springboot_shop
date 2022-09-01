@@ -5,15 +5,13 @@ import com.shop.shop.dto.MemberFormDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import org.springframework.security.config.authentication.PasswordEncoderParser;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "member")
-@Getter
-@Setter
+@Table(name="member")
+@Getter @Setter
 @ToString
 public class Member extends BaseEntity {
 
@@ -44,4 +42,5 @@ public class Member extends BaseEntity {
         member.setRole(Role.ADMIN);
         return member;
     }
+
 }

@@ -1,6 +1,5 @@
 package com.shop.shop.entity;
 
-import groovy.transform.stc.ClosureParams;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
@@ -12,17 +11,16 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
-@EntityListeners(value = {AuditingEntityListener.class})    // Auditing을 적용하기 위해서 추가
-@MappedSuperclass   // 공통 매핑 정보가 필요할 때 사용하는 어노테이션으로 부모 클래스를 상속 받는 자식 클래스에 매핑정보만 제공
-@Getter
-@Setter
-public class BaseTimeEntity {
+@EntityListeners(value = {AuditingEntityListener.class})
+@MappedSuperclass
+@Getter @Setter
+public abstract class BaseTimeEntity {
 
-    @CreatedDate    // 엔티티가 생성되어 저장될 떄 시간을 자동으로 저장
+    @CreatedDate
     @Column(updatable = false)
     private LocalDateTime regTime;
 
-    @LastModifiedDate   // 엔티티의 값이 변경될 떄 시간을 자동으로 저장
+    @LastModifiedDate
     private LocalDateTime updateTime;
 
 }
