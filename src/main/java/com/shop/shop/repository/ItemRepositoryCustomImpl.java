@@ -21,7 +21,7 @@ import java.util.List;
 
 public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
 
-    private JPAQueryFactory queryFactory;
+    private JPAQueryFactory queryFactory;   // 동적 쿼리 생성
 
     public ItemRepositoryCustomImpl(EntityManager em){
         this.queryFactory = new JPAQueryFactory(em);
@@ -47,6 +47,7 @@ public class ItemRepositoryCustomImpl implements ItemRepositoryCustom{
             dateTime = dateTime.minusMonths(6);
         }
 
+        // after == gt , gt(dateTime) => dateTime 보다 클 데이터 조회
         return QItem.item.regTime.after(dateTime);
     }
 
